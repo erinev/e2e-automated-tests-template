@@ -2,6 +2,7 @@
 
 Boostrap project for starting to write UI automated tests.  
 Using:
+
 * [node.js](https://nodejs.org)
 * [webdriver.io](https://webdriver.io/) (selenium tests framework)
 * [mocha](https://mochajs.org/#getting-started) (tests running framework)
@@ -10,10 +11,10 @@ Using:
 * [superagent](https://visionmedia.github.io/superagent/) (http requests lib)
 
 ## Prerequisites
+
 *Without these steps you won't be able to run tests.
 1) Chrome internet browser ([Official chrome website](https://www.google.com/chrome/))
-2) Node.js installed (v7.6.0 and higher) ([Official Node.js website](https://nodejs.org))  
-*(because async/await syntax is used for handling promises)*
+2) Node.js installed ([Official Node.js website](https://nodejs.org))
 3) Newest versions of Python 3 & 2 installed and both versions added to system PATH ([Official Python website](https://www.python.org/downloads/))  
 *(it's needed in order to use webdriver-io cli (@wdio/cli) package)*
 4) Selenium webdriver manager npm package installed globally: *`npm i -g webdriver-manager`*  
@@ -30,10 +31,7 @@ Using:
 *(to check if server started correctly open: http://localhost:4444/wd/hub)*
 4) To run the tests use command: *`npm test -- --login 'your_github_login_name' --password 'your_github_password'`*
 
-## Guidelines
-
-* TBD
-
 ## Notes
 
-* TBD
+* @wdio/sync package makes all WebdriverIO commands run synchronously so you don't need to handle promises for them (i.e.: *`browser.getTitle();`*) ([docs](https://www.npmjs.com/package/wdio-sync))
+* But non WebdriverIO commands (i.e.: http request using superagent: *`request.get(url)`*) you needs to be wrapped in *`browser.call(callback)`* function ([docs](https://webdriver.io/docs/api/browser/call.html))

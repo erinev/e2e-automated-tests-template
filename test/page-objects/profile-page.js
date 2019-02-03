@@ -3,7 +3,6 @@ const PageUtilClass = require('../utils/page-util');
 
 const PageUtil = new PageUtilClass();
 
-
 module.exports = class ProfilePage extends BasePageClass {
   get userStatusContainerDiv() { return $('h1.vcard-names'); }
 

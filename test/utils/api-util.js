@@ -3,17 +3,13 @@ const { config } = require('../../wdio.run.conf');
 
 module.exports = class ApiUtil {
   static getLoggedInUserInfo() {
-    return browser.call(async () => {
-      try {
-        const response = await request
-          .get(`${config.baseApiUrl}/user`)
-          .auth(config.login, config.password);
-
-        return response.body;
-      } catch (error) {
-        return handleApiRequestError(error);
-      }
-    });
+    return browser.call(() => request
+      .get(`${config.baseApiUrl}/user`)
+      .auth(config.login, config.password)
+      .then(
+        response => response.body,
+        handleApiRequestError,
+      ));
   }
 };
 

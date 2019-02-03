@@ -43,10 +43,18 @@ exports.config = {
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60 * 1000,
+    timeout: 10 * 1000,
+    bail: 1,
   },
 
   reporters: ['spec'],
+  services: ['devtools'],
+
+  serviceLevelObjective: {
+    maximumAveragePageDrawingSpeedIndex: 0.5 * 1000,
+    maximumTimeUntilPageIsFullyLoaded: 4 * 1000,
+    maximumPageRequestsCount: 30,
+  },
 
   /**
    * Gets executed once before all workers get launched.
@@ -64,7 +72,7 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
-  async before() {
+  before() {
     // Chai assertion lib initialization
     global.expect = chai.expect;
     chai.Should();
@@ -78,7 +86,13 @@ exports.config = {
   afterTest(test) {
     // Take a screenshot of page after failed test
     if (!test.passed) {
-      browser.saveScreenshot(`${this.failedTestsScreenshotDirectoryName}/${test.fullTitle}.png`);
+      const { browserName } = browser.capabilities;
+
+      const browserSpecificFailedTestsScreenshotDir = `${this.failedTestsScreenshotDirectoryName}/${browserName}`;
+
+      mkdirp.sync(browserSpecificFailedTestsScreenshotDir);
+
+      browser.saveScreenshot(`${browserSpecificFailedTestsScreenshotDir}/${test.fullTitle}.png`);
     }
   },
 };
