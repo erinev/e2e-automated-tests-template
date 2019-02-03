@@ -10,7 +10,7 @@ Using:
 * [superagent](https://visionmedia.github.io/superagent/) (http requests lib)
 
 ## Prerequisites
-
+*Without these steps you won't be able to run tests.
 1) Chrome internet browser ([Official chrome website](https://www.google.com/chrome/))
 2) Node.js installed (v7.6.0 and higher) ([Official Node.js website](https://nodejs.org))  
 *(because async/await syntax is used for handling promises)*
@@ -21,12 +21,14 @@ Using:
 5) Selenium webdriver manager binaries updated: *`webdriver-manager update`*  
 *(So as new as possible browser could be used to run tests against)*
 
-## How to
+## How to run tests
 
-All commands below should be run in the root directory (except webdriver-manager because it must be installed globally. Check prerequisites above)
+*All commands below should be run in the root directory (except webdriver-manager because it must be installed globally. Check prerequisites above)
 1) Fork this repository
 2) To restore npm packages use command: *`npm i`*
-3) To run the tests use command: *`npm test -- --login 'your_github_login_name' --password 'your_github_password'`*
+3) Open new command line (powershell) window and start selenium server: *`webdriver-manager start`*  
+*(to check if server started correctly open: http://localhost:4444/wd/hub)*
+4) To run the tests use command: *`npm test -- --login 'your_github_login_name' --password 'your_github_password'`*
 
 ## Guidelines
 
