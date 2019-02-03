@@ -3,6 +3,7 @@ const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 
 const LoginPageClass = require('./test/page-objects/login-page');
+const NodeCommandUtil = require('./test/utils/node-command-util');
 
 const LoginPage = new LoginPageClass();
 
@@ -65,6 +66,9 @@ exports.config = {
     // Prepare failed tests screenshots folder
     rimraf.sync(config.failedTestsScreenshotDirectoryName);
     mkdirp.sync(config.failedTestsScreenshotDirectoryName);
+
+    NodeCommandUtil.updateWebdriverManagerBinaries();
+    NodeCommandUtil.startWebdriverManager();
   },
   /**
    * Gets executed before test execution begins. At this point you can access to all global
@@ -94,5 +98,14 @@ exports.config = {
 
       browser.saveScreenshot(`${browserSpecificFailedTestsScreenshotDir}/${test.fullTitle}.png`);
     }
+  },
+  /**
+   * Gets executed right after terminating the webdriver session.
+   * @param {Object} config wdio configuration object
+   * @param {Array.<Object>} capabilities list of capabilities details
+   * @param {Array.<String>} specs List of spec file paths that ran
+   */
+  afterSession() {
+    NodeCommandUtil.shutdownWebdriverManager();
   },
 };

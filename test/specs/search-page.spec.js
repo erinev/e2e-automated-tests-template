@@ -20,6 +20,7 @@ describe('Menu header component -', () => {
 
     const { foundRepositoriesListItems } = SearchPage;
 
+    console.log(foundRepositoriesListItems);
     // foundRepositoriesListItems.count.should.be.equal(1);
     // foundRepositoriesListItems.first.getText().should.be.equal(repositoryName);
   });

@@ -19,17 +19,13 @@ Using:
 *(it's needed in order to use webdriver-io cli (@wdio/cli) package)*
 4) Selenium webdriver manager npm package installed globally: *`npm i -g webdriver-manager`*  
 *(this lib is used to start selenium standalone driver. By default it installs only chrome browser driver)*
-5) Selenium webdriver manager binaries updated: *`webdriver-manager update`*  
-*(So as new as possible browser could be used to run tests against)*
 
 ## How to run tests
 
 *All commands below should be run in the root directory (except webdriver-manager because it must be installed globally. Check prerequisites above)
 1) Fork this repository
 2) To restore npm packages use command: *`npm i`*
-3) Open new command line (powershell) window and start selenium server: *`webdriver-manager start`*  
-*(to check if server started correctly open: http://localhost:4444/wd/hub)*
-4) To run the tests use command: *`npm test -- --login 'your_github_login_name' --password 'your_github_password'`*
+3) To run the tests use command: *`npm test -- --login 'your_github_login_name' --password 'your_github_password'`*
 
 ## Notes
 

@@ -6,7 +6,7 @@ const PageUtil = new PageUtilClass();
 module.exports = class SearchPage extends BasePageClass {
   get searchInput() { return $('input[name="q"]'); }
 
-  get searchButton() { return $('#search_form > div > div > input.form-control.input-block.js-search-suggester-field.js-navigation-enable'); }
+  get searchButton() { return $('#search_form > .js-search-suggester-field'); }
 
   get foundRepositoriesList() { return $('ul.repo-list'); }
 
