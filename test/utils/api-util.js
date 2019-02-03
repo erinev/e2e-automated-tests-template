@@ -1,5 +1,5 @@
 const request = require('superagent');
-const { config } = require('../wdio.run.conf');
+const { config } = require('../../wdio.run.conf');
 
 module.exports = class ApiUtil {
   static getLoggedInUserInfo() {

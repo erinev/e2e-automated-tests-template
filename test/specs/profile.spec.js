@@ -1,4 +1,4 @@
-const { config } = require('../wdio.run.conf');
+const { config } = require('../../wdio.run.conf');
 const ProfilePageClass = require('../page-objects/profile-page');
 const ApiUtil = require('../utils/api-util');
 

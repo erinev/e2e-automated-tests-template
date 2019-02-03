@@ -2,7 +2,7 @@ const chai = require('chai');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 
-const LoginPageClass = require('./page-objects/login-page');
+const LoginPageClass = require('./test/page-objects/login-page');
 
 const LoginPage = new LoginPageClass();
 
@@ -36,7 +36,7 @@ exports.config = {
   connectionRetryCount: 3,
 
   specs: [
-    './tests/**/*.spec.js',
+    './test/specs/**/*.spec.js',
   ],
   exclude: [],
 
